@@ -81,6 +81,29 @@ confluent kafka mirror create helloworld --link cp-source-initiated-noauth
 ```
 ### Message Replication
 By leveraging the Confluent Platform UI add a message to Confluent Platform not mirrored topic, you will notice that the message will also appear on Confluent Cloud. Do the same on Confluent Cloud.
+On Confluent Platform open the Topic Message Browser Section before writing messages on Confluent Cloud as the internal Consumer of Confluent Platform will start reading after you opened the view and will fetch only future messages. If you want instead to see the old messages you can set to start by offsets, timestamps or leverage the Console Tools.
+
+Write to a local topic:
+```shell
+docker-compose exec kafka \
+kafka-console-producer --bootstrap-server localhost:19092 --topic my_local_topic
+```
+Read from a local topic:
+
+```shell
+docker-compose exec kafka \
+kafka-console-consumer --bootstrap-server localhost:19092 --topic my_local_topic --from-beginning
+```
+Write to a Confluent Cloud topic:
+```shell
+docker-compose exec kafka \
+kafka-console-producer --bootstrap-server confluent_cloud_bootstrap_server --topic my_remote_topic --producer.config client_ssl.properties
+```
+Read from a Confluent Cloud topic:
+```shell
+docker-compose exec kafka \
+kafka-console-consumer --bootstrap-server confluent_cloud_bootstrap_server --topic my_remote_topic --consumer.config client_ssl.properties --from-beginning
+```
 
 
 ### Consumer Group Offset Sync
