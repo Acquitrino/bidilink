@@ -42,11 +42,10 @@ A Confluent Platform clusters is running:
 Using the local cluster Id we can create a Bidirectional Inbound Cluster Link by using the Confluent CLI:
 
 ```shell
-    confluent kafka link create cp-source-initiated-noauth --cluster your_confluent_cloud_cluster_id --remote-cluster your_local_cluster_id --config-file source-initiated-bidirectional-destination.properties 
+    confluent kafka link create cp-source-initiated-noauth --cluster your_confluent_cloud_cluster_id --remote-cluster your_local_cluster_id --config-file data/source-initiated-bidirectional-destination.properties 
 ```
-3. [Alternative] Create a Confluent Cloud Cluster Link by using Confluent Cloud Console, https://confluent.cloud/create-cluster-link. Follow the wizard, by adding your local cluster ID, selecting your Dedicate Confluent Cloud Cluster, set Auto-create mirror topics and Sync consumer offsets to ON.
 
-4. Verify that the Link has been created successfully by CLI (if used the wizard verify from the UI):
+3. Verify that the Link has been created successfully by CLI:
 ```shell
 confluent kafka link list
 ```
