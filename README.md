@@ -34,7 +34,7 @@ A Confluent Platform clusters is running:
 
 2. Retrive the local cluster ID:
 ```shell
-    docker-compose exec kafka \
+    docker exec kafka \
     kafka-cluster cluster-id --bootstrap-server localhost:19092  
 ```
 
